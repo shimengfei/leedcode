@@ -1,4 +1,5 @@
 package dynamic
+
 //在柠檬水摊上，每一杯柠檬水的售价为 5 美元。
 //
 //顾客排队购买你的产品，（按账单 bills 支付的顺序）一次购买一杯。
@@ -36,29 +37,29 @@ package dynamic
 //对于最后一位顾客，我们无法退回 15 美元，因为我们现在只有两张 10 美元的钞票。
 //由于不是每位顾客都得到了正确的找零，所以答案是 false。
 func lemonadeChange(bills []int) bool {
-	if len(bills)==0 {
+	if len(bills) == 0 {
 		return true
 	}
-	dp:=make([]int,2)
-	for i:=0; i<len(bills);i++{
+	dp := make([]int, 2)
+	for i := 0; i < len(bills); i++ {
 		switch bills[i] {
 		case 5:
-			dp[0]+=1
+			dp[0] += 1
 		case 10:
-			if dp[0]<=0 {
+			if dp[0] <= 0 {
 				return false
 			}
-			dp[1]+=1
-			dp[0]-=1
+			dp[1] += 1
+			dp[0] -= 1
 		case 20:
 			//优先找零10元
-			if dp[0]>=1&&dp[1]>=1 {
-				dp[0]-=1
-				dp[1]-=1
+			if dp[0] >= 1 && dp[1] >= 1 {
+				dp[0] -= 1
+				dp[1] -= 1
 				continue
 			}
-			if dp[0]>=3 {
-				dp[0]-=3
+			if dp[0] >= 3 {
+				dp[0] -= 3
 				continue
 			}
 			return false
