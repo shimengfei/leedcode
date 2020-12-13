@@ -31,7 +31,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 			}
 		}
 		next := tail.Next
-		head, tail = reverseList(head, tail)
+		head, tail = reverseGroupList(head, tail)
 		pre.Next = head
 		tail.Next = next
 		pre = tail
@@ -39,7 +39,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	}
 	return hair.Next
 }
-func reverseList(head *ListNode, tail *ListNode) (*ListNode, *ListNode) {
+func reverseGroupList(head *ListNode, tail *ListNode) (*ListNode, *ListNode) {
 	var prev *ListNode
 	var curr *ListNode
 	prev = tail.Next
