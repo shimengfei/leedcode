@@ -153,3 +153,32 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		}
 	}
 }
+
+//findKthLargest
+func TestFindKthLargest(t *testing.T) {
+	type findKthLargestTests struct {
+		name   string
+		grid   []int
+		k      int
+		result int
+		lis    []int
+	}
+	var tests []findKthLargestTests
+	tests = append(tests, findKthLargestTests{
+		name:   "base test",
+		grid:   []int{3, 2, 1, 5, 6, 4},
+		k:      2,
+		result: 5,
+	})
+	tests = append(tests, findKthLargestTests{
+		name:   "base test",
+		grid:   []int{3, 2, 3, 1, 2, 4, 5, 5, 6},
+		k:      4,
+		result: 4,
+	})
+	for _, test := range tests {
+		if res := findKthLargest(test.grid, test.k); res != test.result {
+			t.Fatalf("error: %v  got: %v", test.result, res)
+		}
+	}
+}
