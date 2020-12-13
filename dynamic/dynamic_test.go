@@ -1,6 +1,9 @@
 package dynamic
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestEnvelopes(t *testing.T) {
 	type envelopesTests struct {
@@ -180,5 +183,31 @@ func TestFindKthLargest(t *testing.T) {
 		if res := findKthLargest(test.grid, test.k); res != test.result {
 			t.Fatalf("error: %v  got: %v", test.result, res)
 		}
+	}
+}
+
+//threeSum
+func TestThreeSum(t *testing.T) {
+	type threeSumTests struct {
+		name   string
+		grid   []int
+		result [][]int
+		lis    []int
+	}
+	var tests []threeSumTests
+	tests = append(tests, threeSumTests{
+		name:   "base test",
+		grid:   []int{-1, 0, 1, 2, -1, -4},
+		result: [][]int{{-1, 0, 1}, {-1, -1, 2}},
+	})
+	tests = append(tests, threeSumTests{
+		name:   "base test",
+		grid:   []int{0, 0, 0},
+		result: [][]int{{0, 0, 0}},
+	})
+	for _, test := range tests {
+		res := threeSum(test.grid)
+		fmt.Printf("%v", res)
+		//t.Fatalf("error: %v  got: %v", test.result, res)
 	}
 }
