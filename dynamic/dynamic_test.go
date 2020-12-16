@@ -237,3 +237,32 @@ func TestMaxProfit(t *testing.T) {
 		}
 	}
 }
+
+//twoSum
+func TestTwoSum(t *testing.T) {
+	type threeSumTests struct {
+		name   string
+		grid   []int
+		target int
+		result []int
+		lis    []int
+	}
+	var tests []threeSumTests
+	tests = append(tests, threeSumTests{
+		name:   "base test",
+		grid:   []int{2, 7, 11, 15},
+		target: 9,
+		result: []int{0, 1},
+	})
+	tests = append(tests, threeSumTests{
+		name:   "base test",
+		grid:   []int{3, 2, 4},
+		target: 6,
+		result: []int{1, 2},
+	})
+	for _, test := range tests {
+		if res := twoSum(test.grid, test.target); res[0] != test.result[0] || res[1] != test.result[1] {
+			t.Fatalf("error: %v  got: %v", test.result, res)
+		}
+	}
+}
