@@ -211,3 +211,29 @@ func TestThreeSum(t *testing.T) {
 		//t.Fatalf("error: %v  got: %v", test.result, res)
 	}
 }
+
+//threeSum
+func TestMaxProfit(t *testing.T) {
+	type threeSumTests struct {
+		name   string
+		grid   []int
+		result int
+		lis    []int
+	}
+	var tests []threeSumTests
+	tests = append(tests, threeSumTests{
+		name:   "base test",
+		grid:   []int{7, 1, 5, 3, 6, 4},
+		result: 5,
+	})
+	tests = append(tests, threeSumTests{
+		name:   "base test",
+		grid:   []int{7, 6, 4, 3, 1},
+		result: 0,
+	})
+	for _, test := range tests {
+		if res := maxProfit(test.grid); res != test.result {
+			t.Fatalf("error: %v  got: %v", test.result, res)
+		}
+	}
+}
